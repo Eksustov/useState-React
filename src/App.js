@@ -2,21 +2,30 @@ import { useState } from "react";
 
 function App() {
   const [corn, setCorn] = useState(0)
+  const [cornChange, setCornChange] = useState(1);
+
   function farmCorn(){
-    setCorn(corn + 1);
+    setCorn(corn + parseInt(cornChange));
   }
+
   function sellCorn(){
-    setCorn(corn - 1);
+    setCorn(corn - parseInt(cornChange));
   }
+
   function abolishCorn(){
     setCorn(corn - corn);
   }
+
+  function handleCornChange(event){
+    setCornChange(event.target.value);
+  }
+
  return(
    <div className="App">
-     <input type="number" id="name" name="name"/>
-     <button type="button" onClick={farmCorn}>+1 Corn</button>
+     <input type="number" value={cornChange} onChange={handleCornChange}/>
+     <button type="button" onClick={farmCorn}>+{cornChange} Corn</button>
      <button type="button" onClick={abolishCorn}>Abolish Corn</button>
-     <button type="button" onClick={sellCorn}>-1 Corn</button>
+     <button type="button" onClick={sellCorn}>-{cornChange} Corn</button>
      <h1>{corn}</h1>
    </div>
  )
