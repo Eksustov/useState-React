@@ -1,7 +1,7 @@
 import { useState } from "react";
 
-function Counter(){
-  const [corn, setCorn] = useState(0)
+function Counter(props){
+  const [corn, setCorn] = useState(props.corn)
   const [cornChange, setCornChange] = useState(1);
 
   function farmCorn(){
